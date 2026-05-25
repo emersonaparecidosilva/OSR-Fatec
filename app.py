@@ -113,17 +113,17 @@ def extrair_dados_reais(imagem_pil):
 # ==============================================================================
 # 4. INTERFACE STREAMLIT (ANÁLISE NO TOPO)
 # ==============================================================================
-st.title("🔍 Validador Inteligente de DANFE")
-st.write("PROJETO: Introdução à Ciência Cognitiva")
+st.title("🔍 Validador de Notas Fiscais utilizando CNN e OSR")
+st.write("Projeto prático da disciplina de Introdução à Inteligciência cognitiva, Professora: Micaella")
 st.markdown("---")
 
-aba_demonstracao, aba_relatorio = st.tabs(["🚀 Demonstração Prática", "📚 Critérios do PDF (Trabalho P4)"])
+aba_demonstracao, aba_relatorio = st.tabs(["🚀 Demonstração Prática", "📚 Critérios de Avaliação"])
 
 with aba_demonstracao:
     if 'processando' not in st.session_state:
         st.session_state.processando = False
 
-    if st.button("🧹 Limpar Tela / Parar"):
+    if st.button("🧹 Limpar Tela / Parar Processamento"):
         st.session_state.processando = False
         st.rerun()
 
