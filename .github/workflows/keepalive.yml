@@ -2,10 +2,8 @@ name: Keep Streamlit Awake
 
 on:
   schedule:
-    # Executa a cada 30 minutos
-    - cron: "*/5 * * * *"
+    - cron: "*/2 * * * *"
 
-  # Permite rodar manualmente também
   workflow_dispatch:
 
 jobs:
@@ -13,7 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Send request to Streamlit app
+      - name: Ping Streamlit app
         run: |
-          curl -L -s -o /dev/null -w "Status: %{http_code}\n" \
-          osr-fatec.streamlit.app/
+          status=$(curl \
+          --silent \
+          --location \
+          --max-redirs 10 \
+          --output /dev/null \
+          --write-out "%{http_code}" \
+          https://osr-fatec.streamlit.app)
+
+          echo "Status: $status"
+
+          if [ "$status" != "200" ]; then
+            echo "Aplicação respondeu com código inesperado"
+            exit 1
+          fi
