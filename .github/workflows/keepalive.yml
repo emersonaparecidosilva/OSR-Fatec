@@ -16,4 +16,4 @@ jobs:
       - name: Send request to Streamlit app
         run: |
           curl -L -s -o /dev/null -w "Status: %{http_code}\n" \
-          http://osr-fatec.streamlit.app/
+          https://osr-fatec.streamlit.app/
