@@ -1,0 +1,6 @@
+streamlit
+tensorflow-cpu
+easyocr
+numpy
+Pillow
+pypdfium2

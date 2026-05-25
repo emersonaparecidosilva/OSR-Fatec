@@ -1,0 +1,20 @@
+# Caches do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches e configurações locais do Streamlit
+.streamlit/
+*.pyc
+
+# Ambientes virtuais (se você usar localmente)
+venv/
+.venv/
+env/
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Modelos do EasyOCR (evita dar push nos pesos do OCR que são pesados)
+.EasyOCR/
