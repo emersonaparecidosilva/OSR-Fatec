@@ -2,7 +2,7 @@ name: Keep Streamlit Awake
 
 on:
   schedule:
-    - cron: "*/3 * * * *"
+    - cron: "*/30 * * * *"
 
   workflow_dispatch:
 
@@ -13,25 +13,21 @@ jobs:
     steps:
       - name: Ping Streamlit
         run: |
-          echo "Enviando requisição..."
+          echo "Enviando ping..."
 
           status=$(curl \
             --silent \
-            --show-error \
-            --location \
-            --max-time 60 \
-            --user-agent "Mozilla/5.0" \
+            --head \
+            --max-time 30 \
             --output /dev/null \
             --write-out "%{http_code}" \
-            https://osr-fatec.streamlit.app || echo "ERRO")
+            --user-agent "Mozilla/5.0" \
+            https://osr-fatec.streamlit.app)
 
-          echo "Status recebido: $status"
+          echo "Status: $status"
 
-          # Apenas registra; não derruba o workflow
-          if [[ "$status" == "ERRO" ]]; then
-            echo "Falha na conexão"
-          elif [[ "$status" =~ ^(200|302|303)$ ]]; then
-            echo "Resposta válida"
+          if [[ "$status" =~ ^(200|301|302|303)$ ]]; then
+              echo "Ping executado"
           else
-            echo "Código inesperado: $status"
+              echo "Resposta inesperada: $status"
           fi
