@@ -113,7 +113,7 @@ def extrair_dados_reais(imagem_pil):
 # ==============================================================================
 # 4. INTERFACE STREAMLIT (ANÁLISE NO TOPO)
 # ==============================================================================
-st.title("🔍 Validador de Notas Fiscais utilizando CNN e OSR")
+st.title("🔍 Validador de Notas Fiscais utilizando CNN e OSR 2")
 st.write("Projeto prático da disciplina de Introdução à Inteligciência cognitiva, Professora: Micaella")
 st.markdown("---")
 
